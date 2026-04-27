@@ -2,7 +2,9 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
 export const api = createApi({
   reducerPath: 'api',
-  baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:4000/api' }),
+  baseQuery: fetchBaseQuery({ 
+    baseUrl: process.env.NEXT_PUBLIC_API_URL || 'https://week8hackkathon.vercel.app/api'
+  }),
   tagTypes: ['Document'],
   endpoints: (builder) => ({
     uploadDocument: builder.mutation<{ documentId: string; filename: string }, FormData>({
